@@ -1,0 +1,47 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "baysoz-logmask"
+version = "0.1.0"
+description = "Log'lardaki kisisel veri ve sirlari dogrulanmis desenlerle maskeleyen bagimliliksiz Python CLI"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "BAYSOZ YAZILIM" }]
+keywords = ["log", "masking", "privacy", "pii", "redaction", "cli"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Security",
+  "Topic :: Utilities",
+]
+dependencies = []
+
+[project.scripts]
+baysoz-logmask = "baysoz_logmask.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/yazilimbaysoz-svg/baysoz-logmask"
+Issues = "https://github.com/yazilimbaysoz-svg/baysoz-logmask/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/baysoz_logmask"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+allowed-confusables = ["ı", "İ"]
